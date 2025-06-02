@@ -7,7 +7,7 @@ export const registerPatient = createAsyncThunk(
     async (data, thunkAPI) => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/auth/register",
+                "https://appointment-management-system-2eix.onrender.com/api/auth/register",
                 data,
                 {
                     withCredentials: true,
@@ -27,7 +27,7 @@ export const loginUser = createAsyncThunk(
     async (data, thunkAPI) => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/auth/login",
+                "https://appointment-management-system-2eix.onrender.com/api/auth/login",
                 data,
                 {
                     withCredentials: true,
@@ -45,7 +45,7 @@ export const getAllDoctors = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await axios.get(
-                "http://localhost:3000/api/auth/doctors",
+                "https://appointment-management-system-2eix.onrender.com/api/auth/doctors",
                 {
                     withCredentials: true,
                 }
@@ -62,7 +62,7 @@ export const getSingleDoctor = createAsyncThunk(
     async (id, thunkAPI) => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/api/auth/doctors/${id}`,
+                `https://appointment-management-system-2eix.onrender.com/api/auth/doctors/${id}`,
                 {
                     withCredentials: true,
                 }
@@ -80,7 +80,7 @@ export const logoutUser = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const response = await axios.get(
-                "http://localhost:3000/api/auth/logout",
+                "https://appointment-management-system-2eix.onrender.com/api/auth/logout",
                 {
                     withCredentials: true,
                 }
@@ -97,7 +97,7 @@ export const getMyProfile = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await axios.get(
-                "http://localhost:3000/api/auth/me",
+                "https://appointment-management-system-2eix.onrender.com/api/auth/me",
                 {
                     withCredentials: true,
                 }

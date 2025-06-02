@@ -7,7 +7,7 @@ export const createAppointment = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/appointments",
+        "https://appointment-management-system-2eix.onrender.com/api/appointments",
         data,
         {
           withCredentials: true,
@@ -25,7 +25,7 @@ export const getOwnAppointments = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/appointments",
+        "https://appointment-management-system-2eix.onrender.com/api/appointments",
         {
           withCredentials: true,
         }
@@ -42,7 +42,7 @@ export const cancelAppointment = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/appointments/${id}/cancel`,
+        `https://appointment-management-system-2eix.onrender.com/api/appointments/${id}/cancel`,
         {
           withCredentials: true,
         }
@@ -60,7 +60,7 @@ export const guestBooksAppointment = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/appointments/guest",
+        "https://appointment-management-system-2eix.onrender.com/api/appointments/guest",
         data,
         {
           withCredentials: true,
@@ -78,7 +78,7 @@ export const guestViewsAppointment = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/appointments/guest",
+        "https://appointment-management-system-2eix.onrender.com/api/appointments/guest",
         {
           withCredentials: true,
         }
@@ -95,7 +95,7 @@ export const guestCancelsAppointment = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/appointments/guest/${id}/cancel`,
+        `https://appointment-management-system-2eix.onrender.com/api/appointments/guest/${id}/cancel`,
         {
           withCredentials: true,
         }
@@ -113,7 +113,7 @@ export const getAllDoctorAppointments = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/appointments/doctor",
+        "https://appointment-management-system-2eix.onrender.com/api/appointments/doctor",
         {
           withCredentials: true,
         }
@@ -131,7 +131,7 @@ export const updateAppointmentStatus = createAsyncThunk(
     try {
       console.log(id, status);
       const response = await axios.put(
-        `http://localhost:3000/api/appointments/doctor/${id}/status`,
+        `https://appointment-management-system-2eix.onrender.com/api/appointments/doctor/${id}/status`,
         {status},
         {
           withCredentials: true,
@@ -150,7 +150,7 @@ export const getAllAppointments = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/appointments/admin",
+        "https://appointment-management-system-2eix.onrender.com/api/appointments/admin",
         {
           withCredentials: true,
         }
@@ -167,7 +167,7 @@ export const updateAnyAppointment = createAsyncThunk(
   async ({ id, data }, thunkAPI) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/appointments/admin/${id}`,
+        `https://appointment-management-system-2eix.onrender.com/api/appointments/admin/${id}`,
         data,
         {
           withCredentials: true,
@@ -185,7 +185,7 @@ export const createAppointmentForPatient = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/appointments/admin",
+        "https://appointment-management-system-2eix.onrender.com/api/appointments/admin",
         data,
         {
           withCredentials: true,
@@ -203,7 +203,7 @@ export const deleteAnyAppointment = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/appointments/admin/${id}`,
+        `https://appointment-management-system-2eix.onrender.com/api/appointments/admin/${id}`,
         {
           withCredentials: true,
         }

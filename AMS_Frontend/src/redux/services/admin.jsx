@@ -7,7 +7,7 @@ export const getAllUsers = createAsyncThunk(
     async (role, thunkAPI) => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/api/admin/users?role=${role}`,
+                `https://appointment-management-system-2eix.onrender.com/api/admin/users?role=${role}`,
                 {
                     withCredentials: true,
                 }
@@ -25,7 +25,7 @@ export const getUserById = createAsyncThunk(
     async (id, thunkAPI) => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/api/admin/users/${id}`,
+                `https://appointment-management-system-2eix.onrender.com/api/admin/users/${id}`,
                 {
                     withCredentials: true,
                 }
@@ -44,7 +44,7 @@ export const updateUserById = createAsyncThunk(
     async ({ id, data }, thunkAPI) => {
         try {
             const response = await axios.put(
-                `http://localhost:3000/api/admin/users/${id}`,
+                `https://appointment-management-system-2eix.onrender.com/api/admin/users/${id}`,
                 data,
                 {
                     withCredentials: true,
@@ -64,7 +64,7 @@ export const deleteUserById = createAsyncThunk(
     async (id, thunkAPI) => {
         try {
             const response = await axios.delete(
-                `http://localhost:3000/api/admin/users/${id}`,
+                `https://appointment-management-system-2eix.onrender.com/api/admin/users/${id}`,
                 {
                     withCredentials: true,
                 }
@@ -83,7 +83,7 @@ export const createDoctor = createAsyncThunk(
     async (data, thunkAPI) => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/admin/doctor",
+                "https://appointment-management-system-2eix.onrender.com/api/admin/doctor",
                 data,
                 {
                     withCredentials: true,
