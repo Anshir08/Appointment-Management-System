@@ -44,7 +44,6 @@ const CreateDoctor = () => {
         experience: '',
       });
     }
-    navigate('/admin/doctors');
   };
 
   return (

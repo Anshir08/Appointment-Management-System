@@ -64,7 +64,7 @@ export const deleteUserById = async (req, res) => {
 // createDoctor
 export const createDoctor = async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const user = await User.create({
             ...req.body,
             password: hashedPassword,
