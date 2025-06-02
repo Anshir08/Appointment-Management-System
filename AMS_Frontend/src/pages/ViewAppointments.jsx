@@ -79,7 +79,7 @@ export default function ViewAppointments() {
                         No {activeTab} appointments.
                     </Typography>
                 ) : (
-                    filteredAppointments.map((apt) => (
+                    filteredAppointments?.map((apt) => (
                         <Card
                             key={apt._id}
                             sx={{
