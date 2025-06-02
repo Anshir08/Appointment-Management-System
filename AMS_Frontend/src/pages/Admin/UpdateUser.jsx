@@ -23,8 +23,8 @@ const UpdateUser = () => {
     };
 
     if (user?.role === "doctor") {
-        initialForm.specialization = "";
-        initialForm.experience = "";
+        initialForm.specialization = user?.specialization || "";
+        initialForm.experience = user?.experience || "";
     }
 
     const [form, setForm] = useState(initialForm);
