@@ -1,29 +1,20 @@
 import { useSelector } from "react-redux";
-import { Redirect, Route } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({isAdmin, component: Component, ...rest}) => {
-  const {loading, isAuthenticated, user} = useSelector((state) => state.user);
+const ProtectedRoute = ({ isAdmin }) => {
+  const { loading, user } = useSelector((state) => state.auth);
 
-  return (
-    <>
-      {loading === false && (
-        <Route
-          {...rest}
-          render={(props) => {
-            if (isAuthenticated === false) {
-              return <Redirect to="/login" />
-            }
+  if (loading) return null; // You can show a spinner here
 
-            if (isAdmin === true && user.role !== "admin") {
-              return <Redirect to="/login" />;
-            }
+  if (!user || !user._id) {
+    return <Navigate to="/login" replace />;
+  }
 
-            return <Component {...props} />
-          }}
-        />
-      )}
-    </>
-  )
-}
+  if (isAdmin && user.role !== "admin") {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Outlet />;
+};
 
 export default ProtectedRoute;
