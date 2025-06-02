@@ -11,6 +11,7 @@ import BookAppointment from './pages/BookAppointment';
 import CreateDoctor from './pages/Admin/CreateDoctor';
 import CreateAppointmentForPatient from './pages/Admin/CreateAppointment';
 import UpdateUser from './pages/Admin/UpdateUser';
+import ProtectedRoute from './components/ProtectedRoute';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { getMyProfile } from './redux/services/auth';
 import { useDispatch } from 'react-redux';
@@ -28,14 +29,17 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegisterPatient />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="*" element={<PageNotFound />} />
+        
         <Route path="/" element={<Home />} />
-        <Route path="/appointments/view" element={<ViewAppointments />} />
         <Route path="/appointments/book/doctor/:id" element={<BookAppointment />} />
-        <Route path="/admin/create-doctor" element={<CreateDoctor />} />
-        <Route path="/admin/create-appointment" element={<CreateAppointmentForPatient />} />
-        <Route path="/admin/update-user/:id" element={<UpdateUser />} />
+
+        <ProtectedRoute isAdmin={false} path="/appointments/view" element={<ViewAppointments />} />
+
+        <ProtectedRoute isAdmin={true} path="/admin/dashboard" element={<AdminDashboard />} />
+        <ProtectedRoute isAdmin={true} path="/admin/create-doctor" element={<CreateDoctor />} />
+        <ProtectedRoute isAdmin={true} path="/admin/create-appointment" element={<CreateAppointmentForPatient />} />
+        <ProtectedRoute isAdmin={true} path="/admin/update-user/:id" element={<UpdateUser />} />
       </Routes>
       <Footer/>
     </Router>
