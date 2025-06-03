@@ -60,7 +60,7 @@ npm start
 - **Only patients** can self-register. **Doctors** must be created by **admins**.
 - Doctors and Admins are allowed to log in directly.
 - **Home** and **Book Appointment** pages are public so guests can view and book appointments.
-- Appointment **date and time slots** are dynamically generated based on clinic working hours.
+- Appointment **date and time slots** are dynamically generated based on clinic working hours and availability.
 - Role-based routing implemented with **protected routes**.
 
 ---
@@ -74,7 +74,7 @@ npm start
 - Update User
 
 ### Authenticated Users (All Roles):
-- View Appointments
+- View Appointments (Pending, Confirmed, Cancelled and Completed)
 
 ---
 

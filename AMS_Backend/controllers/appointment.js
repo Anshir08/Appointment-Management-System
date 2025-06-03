@@ -18,7 +18,7 @@ export const createAppointment = async (req, res) => {
 
 export const getOwnAppointments = async (req, res) => {
     try {
-        const appointments = await Appointment.findById(req.user._id)
+        const appointments = await Appointment.find({patientId:req.user._id})
             .populate("doctorId", "name specialization")
             .populate("patientId", "name");
         res.status(200).json({ success: true, appointments });
