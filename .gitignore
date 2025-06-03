@@ -3,6 +3,7 @@
 
 # Ignore backend environment files
 AMS_Backend/.env
+**/.env
 
 # Ignore logs
 *.log
