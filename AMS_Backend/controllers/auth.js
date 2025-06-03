@@ -79,3 +79,20 @@ export const getSingleDoctor = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+export const updateDoctorAvailability = async (req, res) => {
+  try {
+    const doctor = await User.findById(req.params.id);
+    if (!doctor) {
+      return res.status(404).json({ message: "Doctor not found" });
+    }
+    if (doctor.role !== "doctor") {
+      return res.status(400).json({ message: "Invalid request" });
+    }
+    doctor.availableSlots = req.body.availableSlots;
+    await doctor.save();
+    res.status(200).json({ success: true, doctor });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};

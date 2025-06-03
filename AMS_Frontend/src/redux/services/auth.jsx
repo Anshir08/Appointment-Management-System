@@ -108,3 +108,21 @@ export const getMyProfile = createAsyncThunk(
         }
     }
 );
+
+export const updateDoctorAvailability = createAsyncThunk(
+    "user/updateDoctorAvailability",
+    async ({ id, data }, thunkAPI) => {
+        try {
+            const response = await axios.put(
+                `https://appointment-management-system-2eix.onrender.com/api/auth/doctors/${id}`,
+                data,
+                {
+                    withCredentials: true,
+                }
+            );
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+)

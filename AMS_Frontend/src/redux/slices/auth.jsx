@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { registerPatient, loginUser, logoutUser, getAllDoctors, getSingleDoctor, getMyProfile } from "../services/auth";
+import { registerPatient, loginUser, logoutUser, getAllDoctors, getSingleDoctor, getMyProfile, updateDoctorAvailability } from "../services/auth";
 
 const initialState = {
   user: {},
@@ -74,6 +74,18 @@ const authSlice = createSlice({
         state.doctor = action.payload.doctor;
       })
       .addCase(getSingleDoctor.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload.message;
+      })
+      .addCase(updateDoctorAvailability.pending, (state) => {
+        state.loading = true;
+        state.error = "";
+      })
+      .addCase(updateDoctorAvailability.fulfilled, (state, action) => {
+        state.loading = false;
+        state.doctor = action.payload.doctor;
+      })
+      .addCase(updateDoctorAvailability.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload.message;
       })

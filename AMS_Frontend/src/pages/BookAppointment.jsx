@@ -15,7 +15,10 @@ import {
     guestBooksAppointment,
 } from "../redux/services/appointment";
 import dayjs from "dayjs";
-import { getSingleDoctor } from "../redux/services/auth";
+import {
+    getSingleDoctor,
+    updateDoctorAvailability,
+} from "../redux/services/auth";
 import { useParams } from "react-router-dom";
 
 const generateNext7Days = () =>
@@ -81,6 +84,22 @@ const BookAppointment = () => {
                       reason,
                   })
               );
+        const updatedSlots = doctor?.availableSlots.map((slot) => {
+            if (slot.date.split("T")[0] === selectedDate) {
+                return {
+                    ...slot,
+                    times: slot.times.filter((time) => time !== selectedTime),
+                };
+            }
+            return slot;
+        });
+
+        dispatch(
+            updateDoctorAvailability({
+                id: doctor._id,
+                data: { ...doctor, availableSlots: updatedSlots },
+            })
+        );
     };
 
     return (
