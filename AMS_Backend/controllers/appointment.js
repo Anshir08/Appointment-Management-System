@@ -170,6 +170,7 @@ export const getAllAppointments = async (req, res) => {
     try {
         const appointments = await Appointment.find()
             .populate("doctorId", "name specialization")
+            .populate("patientId", "name")
         console.log(appointments);
         res.status(200).json({ success: true, appointments });
     } catch (error) {
