@@ -34,13 +34,6 @@ const Login = () => {
     navigate('/')
   };
 
-  useEffect(() => {
-    if (user?.email) {
-      console.log('Logged in user:', user);
-      
-    }
-  }, [user]);
-
   return (
     <Container maxWidth="xs">
       <Paper elevation={3} sx={{ padding: 4, marginTop: 8 }}>

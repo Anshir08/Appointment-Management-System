@@ -1,75 +1,129 @@
-## Tech stack used, including specific libraries / versions.
+# 🩺 Appointment Management System (AMS)
 
-Frontend - Reactjs, Material UI, React Router, Redux-toolkit, Axios, dayjs.
-Backend - NodeJs(Express), bcrypt, jsonwebtoken, Mongoose(ORM), Nodemailer, cors, cookie-parser.
-Database - MongoDB Atlas
+## 🛠 Tech Stack
 
-## Project setup guidelines
+### Frontend
+- **React.js**
+- **Material UI**
+- **React Router**
+- **Redux Toolkit**
+- **Axios**
+- **Day.js**
 
-clone the repository
+### Backend
+- **Node.js (Express)**
+- **bcrypt**
+- **jsonwebtoken**
+- **Mongoose (ORM)**
+- **Nodemailer**
+- **CORS**
+- **cookie-parser**
 
-Open first terminal
-   - cd AMS_Frontend
-   - npm install
-   - npm run dev
+### Database
+- **MongoDB Atlas**
 
-Open second terminal
-   - cd AMS_Backend
-   - npm install
-   - npm start
+---
 
+## 🚀 Project Setup Instructions
 
-## A quick paragraph with how you approached the project, what you liked,
-what you didn’t like, and where you faced issues.
+### 1. Clone the repository
 
-# Approach - 
+```bash
+git clone <repository-url>
+```
 
-Made for Authentication for both patients, doctors and admins where only patient can register doctors would be created by admins only. Doctors and Admins are allowed to login.
+### 2. Frontend Setup
 
-Home Page and Book_Appointment(dynamic according to the role i.e. guest or other user) pages are public so that Guest can also access them
+Open the first terminal:
 
-Date and time_slots are generated dynamically according to the working hours of the clinic.
+```bash
+cd AMS_Frontend
+npm install
+npm run dev
+```
 
-Only Admin accessible routes -
-    Admin Dashboard
-    Create Doctor
-    Create Appointment for Patient
-    Update User
+### 3. Backend Setup
 
-ViewAppointments route is only accessible by all authenticated users.
+Open the second terminal:
 
-# Issues - 
-State Managing the whole app took a lot of time still lot of polishng could be done just to make it scalable.
+```bash
+cd AMS_Backend
+npm install
+npm start
+```
 
-## Estimated time to complete your test.
+---
 
-Took me approx 20 hours
+## 🧠 Project Approach
 
-## What is pending by your side?
+- Implemented authentication for **patients, doctors, and admins**.
+- **Only patients** can self-register. **Doctors** must be created by **admins**.
+- Doctors and Admins are allowed to log in directly.
+- **Home** and **Book Appointment** pages are public so guests can view and book appointments.
+- Appointment **date and time slots** are dynamically generated based on clinic working hours.
+- Role-based routing implemented with **protected routes**.
 
--- The Requirements have all covered plus some extra features have been added.
+---
 
--- A lot of Polishing could be done more for make it all possible errors prone.
+## 🔐 Role-Based Access
 
--- Also some extra features could have been added like automatic sending updates, cancelling of appointments that have been missed by doctor or if patient doesn't show up for the appointment via scheduling to run these kind of background concurrent tasks using node-cron package.
+### Admin-Only Routes:
+- Admin Dashboard
+- Create Doctor
+- Create Appointment for Patient
+- Update User
 
+### Authenticated Users (All Roles):
+- View Appointments
 
-# Sample Data to test in an Isolated Environment
+---
 
-- Patient Account Credential- 
-    email: "patient@example.com",
-    password: "password",
+## 🐛 Issues Faced
 
-- Doctor Account Credential- 
-    email: "doctor@example.com",
-    password: "password",
+- **State Management** across the app using Redux Toolkit took significant time.
+- More **polish and optimization** is still possible to enhance scalability and UX.
 
-- Admin Account Credential- 
-    email: "admin@example.com",
-    password: "password",
+---
 
-- For Guest Try booking the appointment with any doctor without login. You will recieve the Confirmation Email with Appointment Details.
+## ⏳ Estimated Time to Complete
 
+> ⏱ **Approx. 20 hours**
 
+---
 
-### Thank you for your time.
+## ✅ Current Status
+
+- All core requirements are implemented.
+- Extra features like **guest appointment booking with email confirmation** have been added.
+- Additional polish is still possible to make it **error-proof** and production-ready.
+
+---
+
+## 🔮 Pending Enhancements
+
+- Improve UX with more detailed error handling.
+- Add background job scheduler (e.g., **node-cron**) to:
+  - Automatically cancel appointments missed by doctors or patients.
+  - Send update emails or reminders proactively.
+
+---
+
+## 🧪 Sample Test Credentials
+
+### 👤 Patient
+- **Email**: `patient@example.com`  
+- **Password**: `password`
+
+### 🩺 Doctor
+- **Email**: `doctor@example.com`  
+- **Password**: `password`
+
+### 🛡 Admin
+- **Email**: `admin@example.com`  
+- **Password**: `password`
+
+> 💡 **Guest Users** can also try booking an appointment. They will receive a confirmation email with appointment details without needing to log in.
+
+---
+
+### 🙏 Thank you for your time!

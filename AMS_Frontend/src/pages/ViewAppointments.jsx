@@ -48,13 +48,11 @@ export default function ViewAppointments() {
     }, [dispatch]);
 
     const updateAppointmentStatusHandler = (id, status) => {
-		
         if (user?.role === "patient") {
             dispatch(cancelAppointment(id));
         } else {
-            dispatch(updateAppointmentStatus({id, status}));
+            dispatch(updateAppointmentStatus({ id, status }));
         }
-
     };
 
     return (
@@ -168,54 +166,60 @@ export default function ViewAppointments() {
 
                                     {/* Actions */}
                                     <Box display="flex" gap={1} minWidth="15%">
-                                        {(user?.role === "doctor" ||
-                                            user?.role === "admin") && (
+                                        {((user?.role === "doctor" ||
+                                            user?.role === "admin") &&
+                                            apt.status !== "confirmed") && (
+                                                <Button
+                                                    variant="contained"
+                                                    color="success"
+                                                    size="small"
+                                                    startIcon={
+                                                        <CheckCircleIcon />
+                                                    }
+                                                    onClick={() =>
+                                                        updateAppointmentStatusHandler(
+                                                            apt._id,
+                                                            "confirmed"
+                                                        )
+                                                    }
+                                                >
+                                                    Confirm
+                                                </Button>
+                                            )}
+                                        {((user?.role === "doctor" ||
+                                            user?.role === "admin") &&
+                                            apt.status !== "completed") && (
+                                                <Button
+                                                    variant="contained"
+                                                    color="primary"
+                                                    size="small"
+                                                    startIcon={<DoneAllIcon />}
+                                                    onClick={() =>
+                                                        updateAppointmentStatusHandler(
+                                                            apt._id,
+                                                            "completed"
+                                                        )
+                                                    }
+                                                >
+                                                    Complete
+                                                </Button>
+                                            )}
+                                        {apt.status !== "cancelled" && (
                                             <Button
                                                 variant="contained"
-                                                color="success"
+                                                color="error"
                                                 size="small"
-                                                startIcon={<CheckCircleIcon />}
+                                                startIcon={<CancelIcon />}
                                                 onClick={() =>
                                                     updateAppointmentStatusHandler(
                                                         apt._id,
-                                                        "confirmed"
+                                                        "cancelled"
                                                     )
                                                 }
                                             >
-                                                Confirm
+                                                Cancel
                                             </Button>
                                         )}
-                                        {(user?.role === "doctor" ||
-                                            user?.role === "admin") && (
-                                            <Button
-                                                variant="contained"
-                                                color="primary"
-                                                size="small"
-                                                startIcon={<DoneAllIcon />}
-                                                onClick={() =>
-                                                    updateAppointmentStatusHandler(
-                                                        apt._id,
-                                                        "completed"
-                                                    )
-                                                }
-                                            >
-                                                Complete
-                                            </Button>
-                                        )}
-                                        <Button
-                                            variant="contained"
-                                            color="error"
-                                            size="small"
-                                            startIcon={<CancelIcon />}
-                                            onClick={() =>
-                                                updateAppointmentStatusHandler(
-                                                    apt._id,
-                                                    "cancelled"
-                                                )
-                                            }
-                                        >
-                                            Cancel
-                                        </Button>
                                     </Box>
                                 </Box>
                             </CardContent>

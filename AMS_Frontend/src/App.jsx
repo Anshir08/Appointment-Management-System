@@ -14,7 +14,7 @@ import UpdateUser from "./pages/Admin/UpdateUser";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getMyProfile } from "./redux/services/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
     const dispatch = useDispatch();

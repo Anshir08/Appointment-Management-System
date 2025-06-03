@@ -110,17 +110,20 @@ const BookAppointment = () => {
             )}
             {appointment._id && (
                 <Alert severity="success" sx={{ mb: 2 }}>
-                    Appointment booked successfully!  {!user._id && "Please check your email."}
+                    Appointment booked successfully!{" "}
+                    {!user._id && "Please check your email."}
                 </Alert>
             )}
 
-            <TextField
-                label="Guest Email"
-                fullWidth
-                value={guestEmail}
-                onChange={(e) => setGuestEmail(e.target.value)}
-                sx={{ mb: 3 }}
-            />
+            {!user._id && (
+                <TextField
+                    label="Guest Email"
+                    fullWidth
+                    value={guestEmail}
+                    onChange={(e) => setGuestEmail(e.target.value)}
+                    sx={{ mb: 3 }}
+                />
+            )}
 
             <Typography variant="subtitle1" gutterBottom>
                 Date

@@ -17,23 +17,27 @@ const UpdateUser = () => {
     const params = useParams();
     const { user, loading, error } = useSelector((state) => state.admin);
 
-    const initialForm = {
-        name: user?.name || "",
-        email: user?.email || "",
-    };
 
-    if (user?.role === "doctor") {
-        initialForm.specialization = user?.specialization || "";
-        initialForm.experience = user?.experience || "";
-    }
-
-    const [form, setForm] = useState(initialForm);
+    const [form, setForm] = useState({});
 
     const [successMessage, setSuccessMessage] = useState("");
 
     useEffect(() => {
         dispatch(getUserById(params.id));
     }, [dispatch, params.id]);
+
+    useEffect(() => {
+        if (user) {
+            setForm({
+                name: user.name,
+                email: user.email,
+                ...(user.role === "doctor" && {
+                    specialization: user.specialization,
+                    experience: user.experience,
+                }),
+            });
+        }
+    }, [user]);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });

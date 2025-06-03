@@ -7,7 +7,7 @@ const initialState = {
   doctors: [],
   doctor: null,
   error: "",
-  loading: false,
+  loading: true,
 };
 
 const authSlice = createSlice({
