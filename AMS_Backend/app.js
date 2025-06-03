@@ -22,6 +22,10 @@ app.use(cookieParser());
 
 connectDB();
 
+app.get("/", (req, res) => {
+    res.send("Hello from Appointment Management System Backend. Your server is running.");
+});
+
 // Routes
 app.use("/api/auth", authRoute);
 app.use("/api/admin", adminRoute);
