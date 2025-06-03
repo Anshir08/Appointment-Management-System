@@ -58,6 +58,11 @@ const Navbar = () => {
                     Create Doctor
                 </MenuItem>
             );
+            items.push(
+                <MenuItem onClick={() => navigate("/appointments/view")}>
+                    All Appointments
+                </MenuItem>
+            );
         }
 
         if (role === "patient") {
@@ -77,6 +82,7 @@ const Navbar = () => {
         }
 
         if (role) {
+            
             items.push(<MenuItem onClick={handleLogout}>Logout</MenuItem>);
         }
 

@@ -2,16 +2,16 @@
 **/node_modules/
 
 # Ignore backend environment files
-/backend/.env
+/AMS_Backend/.env
 
 # Ignore logs
 *.log
 npm-debug.log*
 
 # Ignore frontend build output
-/frontend/build/
-/frontend/.next/
-/frontend/.turbo/
+/AMS_Frontend/build/
+/AMS_Frontend/.next/
+/AMS_Frontend/.turbo/
 
 # Ignore OS files
 .DS_Store
