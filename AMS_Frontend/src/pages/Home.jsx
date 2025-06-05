@@ -4,10 +4,11 @@ import BannerImg from "../assets/banner.jpg";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../redux/services/auth";
+import Loader from "../components/Loader";
 
 const Home = () => {
 	const dispatch = useDispatch();
-    const doctors = useSelector((state) => state.auth.doctors);
+    const {doctors, loading} = useSelector((state) => state.auth);
 
     useEffect(() => {
         dispatch(getAllDoctors());
@@ -69,10 +70,13 @@ const Home = () => {
     //     },
     // ];
 
+
     const viewDoctors = () => {
         const section = document.getElementById("doctors");
         if (section) section.scrollIntoView({ behavior: "smooth" });
     };
+
+    if (loading) return <Loader/>;
 
     return (
         <>
