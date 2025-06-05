@@ -48,6 +48,11 @@ export const cancelAppointment = async (req, res) => {
 // for guests
 export const guestBooksAppointment = async (req, res) => {
     try {
+        if (!req.body.guestEmail) {
+            return res
+                .status(400)
+                .json({ message: "Guest email is required" });
+        }
         const appointment = await Appointment.create(req.body);
         const secure_token = jwt.sign(
             { _id: appointment._id, guestEmail: req.body.guestEmail },
