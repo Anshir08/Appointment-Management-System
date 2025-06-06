@@ -36,12 +36,12 @@ const workingHours = Array.from({ length: 9 }, (_, i) => `${9 + i}:00`);
 const BookAppointment = () => {
     const dispatch = useDispatch();
     const params = useParams();
-    const { appointment, error: appointmentError } = useSelector((state) => state.appointment);
-    const { user, doctor, error, loading } = useSelector((state) => state.auth);
+    const { appointment, error, loading } = useSelector((state) => state.appointment);
+    const { user, doctor } = useSelector((state) => state.auth);
     const [selectedDate, setSelectedDate] = useState(
         dayjs().format("YYYY-MM-DD")
     );
-    const [selectedTime, setSelectedTime] = useState(workingHours[0]);
+    const [selectedTime, setSelectedTime] = useState();
     const [reason, setReason] = useState("");
     const [guestEmail, setGuestEmail] = useState("");
 
@@ -121,9 +121,9 @@ const BookAppointment = () => {
                 </Box>
             </Box>
 
-            {(error || appointmentError) && (
+            {(error) && (
                 <Alert severity="error" sx={{ mb: 2 }}>
-                    {error || appointmentError}
+                    {error}
                 </Alert>
             )}
             {appointment._id && (

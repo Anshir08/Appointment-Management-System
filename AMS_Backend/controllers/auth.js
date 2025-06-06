@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import { cookieOptions, sendToken } from "../utils/jwtToken.js";
 import bcrypt from "bcrypt";
+// import { generateSlotsForNext7Days } from "../utils/createSlots.js";
 
 export const registerPatient = async (req, res) => {
   const { name, email, password } = req.body;
@@ -74,6 +75,8 @@ export const getSingleDoctor = async (req, res) => {
     if (doctor.role !== "doctor") {
       return res.status(400).json({ message: "Invalid request" });
     }
+    // doctor.availableSlots = generateSlotsForNext7Days()
+    // await doctor.save();
     res.status(200).json({ success: true, doctor });
   } catch (error) {
     res.status(400).json({ message: error.message });
