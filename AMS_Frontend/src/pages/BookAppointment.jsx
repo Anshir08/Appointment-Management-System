@@ -36,7 +36,7 @@ const workingHours = Array.from({ length: 9 }, (_, i) => `${9 + i}:00`);
 const BookAppointment = () => {
     const dispatch = useDispatch();
     const params = useParams();
-    const { appointment } = useSelector((state) => state.appointment);
+    const { appointment, error: appointmentError } = useSelector((state) => state.appointment);
     const { user, doctor, error, loading } = useSelector((state) => state.auth);
     const [selectedDate, setSelectedDate] = useState(
         dayjs().format("YYYY-MM-DD")
@@ -63,7 +63,6 @@ const BookAppointment = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(user);
         user._id
             ? dispatch(
                   createAppointment({
@@ -84,6 +83,7 @@ const BookAppointment = () => {
                       reason,
                   })
               );
+        if (!user._id && !guestEmail) return;
         const updatedSlots = doctor?.availableSlots.map((slot) => {
             if (slot.date.split("T")[0] === selectedDate) {
                 return {
@@ -93,7 +93,6 @@ const BookAppointment = () => {
             }
             return slot;
         });
-
         dispatch(
             updateDoctorAvailability({
                 id: doctor._id,
@@ -122,9 +121,9 @@ const BookAppointment = () => {
                 </Box>
             </Box>
 
-            {error && (
+            {(error || appointmentError) && (
                 <Alert severity="error" sx={{ mb: 2 }}>
-                    {error}
+                    {error || appointmentError}
                 </Alert>
             )}
             {appointment._id && (
